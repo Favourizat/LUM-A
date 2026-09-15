@@ -45,7 +45,7 @@ export default function BestSellers({ bestSellers }) {
                     <Link
                     href="/products"
                     className="text-sm font-medium text-[#3A2A22]">
-                        View All
+                        View All at
                     </Link>
                 </div>
 

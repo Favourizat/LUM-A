@@ -42,7 +42,7 @@ export default function AdminSidebar() {
                 LUMÉA Admin
             </h2>
 
-            <nav className="soace-y-2">
+            <nav className="space-y-2">
                 {links.map((link) => {
                     const Icon = link.icon
 

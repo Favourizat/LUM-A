@@ -6,31 +6,37 @@ const categories = [
         name: "Toners",
         slug: "toners",
         image: "/toner-new.avif",
+        category: "toner",
     },
     {
         name: "Treatments",
         slug: "treatments",
         image: "/treatment.jpg",
+        category: "treatments",
     },
     {
         name: "Serums",
         slug: "serums",
         image: "/serum.jpg",
+        category: "serums",
     },
     {
         name: "Moisturizers",
         slug: "moisturizers",
         image: "/moisturizer.jpg",
+        category: "moisturizers"
     },
     {
         name: "Eyecare",
         slug: "eyecare",
         image: "/eyecare.jpg",
+        category: "eyecare"
     },
     {
         name: "Lipcare",
         slug: "lipcare",
         image: "/lipcare.jpg",
+        categort: "lipcare"
     },
 ];
 

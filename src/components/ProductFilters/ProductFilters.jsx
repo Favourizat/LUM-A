@@ -23,6 +23,8 @@ export default function ProductFilters({ products, initialCategory = "ALL" }) {
         "MOISTURIZERS",
         "SUNSCREEN",
         "BODYCARE",
+        "EYECARE",
+        "LIPCARE",
     ];
 
     let filteredProducts = [...products];

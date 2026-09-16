@@ -134,6 +134,7 @@ export default function Navbar() {
                                 <Search
                                     size={20}
                                     strokeWidth={1.5}
+                                    className="transition hover:scale-150 cursor-pointer"
                                 />
                             </button>
 
@@ -145,7 +146,7 @@ export default function Navbar() {
                                 <Search
                                     size={18}
                                     strokeWidth={1.5}
-                                    className="shrink-0 text-[#3A2A22] transition hover:scale-110 cursor-pointer"
+                                    className="shrink-0 text-[#3A2A22] cursor-pointer"
                                 />
 
                                 <input

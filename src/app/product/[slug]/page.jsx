@@ -3,9 +3,12 @@ import Image from "next/image";
 import { Star} from "lucide-react";
 import AddToCartButton from "@/components/AddToCartButton/AddToCartButton";
 import Product from "@/models/Product";
+import connectToDatabase from "@/lib/mongodb";
 
 export default async function ProductPage({ params }) {
     const { slug } = await params;
+
+    await connectToDatabase()
 
     const productsFromDatabase = await Product.findOne({
         slug: slug,
@@ -49,7 +52,7 @@ export default async function ProductPage({ params }) {
                 <div>
 
                     {/* Product Image */}
-                    <div className="relative aspect-4/5 overflow-hidden rounded-3xl bg-[#F7F2E8]">
+                    <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-[#F7F2E8]">
                         <Image
                             src={product.image}
                             alt={product.name}

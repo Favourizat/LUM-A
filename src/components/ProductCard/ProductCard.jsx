@@ -8,6 +8,7 @@ import AddToCartButton from "../AddToCartButton/AddToCartButton";
 import { useWishlist } from "@/context/WishlistContext";
 
 export default function ProductCard({ product }) {
+    console.log("PRODUCT SLUG:", product.slug);
 
     const { toggleWishlist, isInWishlist } = useWishlist();
 

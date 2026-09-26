@@ -64,7 +64,7 @@ export async function POST(request) {
                 body: JSON.stringify({
                     email: email,
                     amount: order.totalAmount * 100,
-                    callback_url: "http://localhost:3000/payment/callback",
+                    callback_url: `${process.env.NEXT_PUBLIC_SITE_URL}/payment/callback`,
                 }),
             }
         );

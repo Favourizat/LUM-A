@@ -144,52 +144,52 @@ export default function CheckoutForm() {
             },
             body: JSON.stringify({
                 email: email,
-                amount: total * 100,
+                amount: total,
                 orderId: data.order._id,
             })
         })
 
-        
-const paymentText = await paymentResponse.text()
+
+        const paymentText = await paymentResponse.text()
 
 
 
 
-console.log("PAYMENT RESPONSE STATUS:", paymentResponse.status);
-console.log("PAYMENT RESPONSE:", paymentText);
+        console.log("PAYMENT RESPONSE STATUS:", paymentResponse.status);
+        console.log("PAYMENT RESPONSE:", paymentText);
 
-let paymentData = {};
+        let paymentData = {};
 
-try {
-    paymentData = paymentText ? JSON.parse(paymentText) : {};
-} catch (error) {
-    console.error("PAYMENT RESPONSE IS NOT VALID JSON:", error);
-    return;
-}
+        try {
+            paymentData = paymentText ? JSON.parse(paymentText) : {};
+        } catch (error) {
+            console.error("PAYMENT RESPONSE IS NOT VALID JSON:", error);
+            return;
+        }
 
-if (!paymentResponse.ok) {
-    console.error("PAYMENT ERROR:", paymentData);
-    return;
-}
+        if (!paymentResponse.ok) {
+            console.error("PAYMENT ERROR:", paymentData);
+            return;
+        }
 
-console.log("PAYMENT INITIALIZED:", paymentData);
+        console.log("PAYMENT INITIALIZED:", paymentData);
 
-if (!paymentData.success) {
-    console.error("PAYMENT INITIALIZATION WAS NOT SUCCESSFUL:", paymentData);
-    return;
-}
+        if (!paymentData.success) {
+            console.error("PAYMENT INITIALIZATION WAS NOT SUCCESSFUL:", paymentData);
+            return;
+        }
 
-if (!paymentData.authorization_url) {
-    console.error("PAYSTACK AUTHORIZATION URL IS MISSING:", paymentData);
-    return;
-}
+        if (!paymentData.authorization_url) {
+            console.error("PAYSTACK AUTHORIZATION URL IS MISSING:", paymentData);
+            return;
+        }
 
-console.log(
-    "REDIRECTING TO PAYSTACK:",
-    paymentData.authorization_url
-);
+        console.log(
+            "REDIRECTING TO PAYSTACK:",
+            paymentData.authorization_url
+        );
 
-window.location.href = paymentData.authorization_url;
+        window.location.href = paymentData.authorization_url;
     }
 
     return (

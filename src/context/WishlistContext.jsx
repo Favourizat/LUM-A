@@ -17,7 +17,7 @@ export function WishlistProvider({ children }) {
                 setWishlist(JSON.parse(savedWishlist));
             }
         } catch (error) {
-            console.error("Failed to load wishlist:", error);
+            console.error("Failed to save wishlist:", error);
         }
 
         setIsLoaded(true);

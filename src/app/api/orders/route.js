@@ -8,23 +8,20 @@ export async function POST(request) {
     try {
         const session = await getServerSession(authOptions);
 
-        if (!session) {
-            return Response.json(
-                { message: "Unauthorized" },
-                { status: 401 }
-            );
-        }
-
         const body = await request.json();
 
         await connectToDatabase();
 
-        const customer = await User.findOne({
-            email: session.user.email,
-        });
+        let customer = null;
 
-        const order = await Order.create({
-            customer: customer._id,
+        // If the user is logged in, find their User account
+        if (session?.user?.email) {
+            customer = await User.findOne({
+                email: session.user.email,
+            });
+        }
+
+        const orderData = {
             customerName: body.customerName,
             customerEmail: body.customerEmail,
             customerPhone: body.customerPhone,
@@ -32,8 +29,15 @@ export async function POST(request) {
             deliveryCity: body.deliveryCity,
             items: body.items,
             totalAmount: body.totalAmount,
-            status: "pending"
-        });
+            status: "pending",
+        };
+
+        // Only attach a customer if a logged-in user was found
+        if (customer?._id) {
+            orderData.customer = customer._id;
+        }
+
+        const order = await Order.create(orderData);
 
         return Response.json({
             success: true,

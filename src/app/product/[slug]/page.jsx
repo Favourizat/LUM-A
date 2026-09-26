@@ -1,7 +1,6 @@
 
 import Image from "next/image";
-import { Star, Heart } from "lucide-react";
-import Link from "next/link";
+import { Star} from "lucide-react";
 import AddToCartButton from "@/components/AddToCartButton/AddToCartButton";
 import Product from "@/models/Product";
 
@@ -83,10 +82,7 @@ export default async function ProductPage({ params }) {
                         <div className="h-0.5 w-32 bg-gray-200"></div>
 
                         <p className="mt-6 max-w-lg leading-7 text-[#3A2A22]/70">
-                            A thoughtfully formulated LUMÉA essential, created with
-                            care to complement your skin and become a cherished part
-                            of your everyday skincare ritual. Simple, effective, and
-                            intentionally made for moments of everyday self-care.
+                          {product.description}
                         </p>
                     </div>
 
@@ -97,7 +93,7 @@ export default async function ProductPage({ params }) {
 
                     <div className="tracking-[0.1em] mt-4">
                         <span className="font-bold"> Availability: </span>
-                        <span>In stock</span>
+                        <span>{product.stock > 0 ? "In stock" : "Out of stock"}</span>
                     </div>
 
                     <div className="mt-4 tracking-[0.1em]">

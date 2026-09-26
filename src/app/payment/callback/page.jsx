@@ -4,6 +4,7 @@
 import { Suspense, useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { useCart } from "@/context/CartContext"
+import Link from "next/link"
 
 function PaymentCallbackContent() {
     const searchParams = useSearchParams()
@@ -76,18 +77,45 @@ function PaymentCallbackContent() {
 
     if (status === "success") {
         return (
-            <div className="flex min-h-screen items-center justify-center">
-                <div className="text-center">
-                    <h1 className="text-3xl font-semibold">
-                        Payment successful!
+            <main className="flex min-h-screen items-center justify-center bg-[#F7F2E8] px-6">
+                <div className="w-full max-w-lg rounded-3xl bg-white p-8 text-center shadow-sm md:p-12">
+
+                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#7D8B72]/15">
+                        <span className="text-2xl text-[#7D8B72]">
+                            ✓
+                        </span>
+                    </div>
+
+                    <p className="mt-6 text-xs font-medium tracking-[0.3em] text-[#7D8B72]">
+                        LUMÉA
+                    </p>
+
+                    <h1 className="mt-3 text-3xl font-medium text-[#3A2A22]">
+                        Payment successful
                     </h1>
 
-                    <p className="mt-3">
+                    <p className="mx-auto mt-4 max-w-md text-sm leading-6 text-[#3A2A22]/60">
                         Thank you for your order. Your payment has been
-                        confirmed.
+                        successfully confirmed.
                     </p>
+
+                    <p className="mt-6 text-sm font-medium text-[#3A2A22]">
+                        Payment Reference
+                    </p>
+
+                    <p className="mt-2 text-sm text-[#3A2A22]/60">
+                        {reference}
+                    </p>
+
+                    <Link
+                        href="/products"
+                        className="mt-8 inline-block rounded-full bg-[#3A2A22] px-8 py-4 text-sm font-medium text-[#F7F2E8] transition hover:opacity-90"
+                    >
+                        Continue Shopping
+                    </Link>
+
                 </div>
-            </div>
+            </main>
         )
     }
 

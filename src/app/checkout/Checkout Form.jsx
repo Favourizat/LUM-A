@@ -152,21 +152,44 @@ export default function CheckoutForm() {
         
 const paymentText = await paymentResponse.text()
 
-console.log("PAYMENT RESPONSE STATUS:", paymentResponse.status)
-console.log("PAYMENT RESPONSE:", paymentText)
 
-const paymentData = paymentText ? JSON.parse(paymentText) : {}
 
-if (!paymentResponse.ok) {
-    console.log("PAYMENT ERROR:", paymentData)
-    return
+
+console.log("PAYMENT RESPONSE STATUS:", paymentResponse.status);
+console.log("PAYMENT RESPONSE:", paymentText);
+
+let paymentData = {};
+
+try {
+    paymentData = paymentText ? JSON.parse(paymentText) : {};
+} catch (error) {
+    console.error("PAYMENT RESPONSE IS NOT VALID JSON:", error);
+    return;
 }
 
-        console.log("PAYMENT INITIALIZED:", paymentData)
+if (!paymentResponse.ok) {
+    console.error("PAYMENT ERROR:", paymentData);
+    return;
+}
 
-        if(paymentData.success){
-            window.location.href = paymentData.authorization_url
-        }
+console.log("PAYMENT INITIALIZED:", paymentData);
+
+if (!paymentData.success) {
+    console.error("PAYMENT INITIALIZATION WAS NOT SUCCESSFUL:", paymentData);
+    return;
+}
+
+if (!paymentData.authorization_url) {
+    console.error("PAYSTACK AUTHORIZATION URL IS MISSING:", paymentData);
+    return;
+}
+
+console.log(
+    "REDIRECTING TO PAYSTACK:",
+    paymentData.authorization_url
+);
+
+window.location.href = paymentData.authorization_url;
     }
 
     return (

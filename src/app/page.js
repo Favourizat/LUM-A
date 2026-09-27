@@ -3,8 +3,11 @@ import CategorySlider from "@/components/CategorySlider/CategorySlider";
 import Hero from "@/components/Hero/Hero";
 import NewArrivals from "@/components/NewArrivals/NewArrivals";
 import ShopByCategory from "@/components/ShopByCategory/ShopByCategory";
+import ShopSerum from "@/components/ShopSerum/ShopSerum";
 import connectToDatabase from "@/lib/mongodb";
 import Product from "@/models/Product";
+import NewArrivalsBar from "@/components/NewArrivalsBar/NewArrivalsBar";
+import Testimonials from "@/components/Testimonials/Testimonials";
 
 export default async function Home() {
   await connectToDatabase()
@@ -42,7 +45,10 @@ export default async function Home() {
       <CategorySlider />
       <ShopByCategory />
       <BestSellers bestSellers={bestsellers} />
+       <ShopSerum />
+       <NewArrivalsBar />
       <NewArrivals newArrivals={newArrivals} />
+      <Testimonials />
     </main>
   );
 }

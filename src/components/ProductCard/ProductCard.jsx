@@ -19,8 +19,8 @@ export default function ProductCard({ product }) {
     }
 
     return (
-        <div className="group">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-[#F7F2E8]">
+        <div className="group overflow-hidden rounded-2xl bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div className="relative aspect-[4/5] overflow-hidden bg-[#F7F2E8]">
 
                 <Image
                     src={product.image}
@@ -67,19 +67,19 @@ export default function ProductCard({ product }) {
                 </div>
             </div>
 
-            <div className="mt-4 flex flex-col">
+            <div className="flex flex-col px-5 pb-5 pt-4">
 
-                <p className="mb-3">
+                <p className="mb-1">
                     {product.category}
                 </p>
 
                 <Link href={`/product/${product.slug}`}>
-                    <h3 className="line-clamp-2 min-h-[40px] text-sm font-bold text-[#3A2A22] transition hover:opacity-70">
+                    <h3 className="line-clamp-2 min-h-[30px] text-sm font-bold text-[#3A2A22] transition hover:opacity-70">
                         {product.name}
                     </h3>
                 </Link>
 
-                <p className="mt-1 text-sm font-semibold text-[#3A2A22]/70">
+                <p className="text-sm font-semibold text-[#3A2A22]/70">
                     N{product.price.toLocaleString()}
                 </p>
 

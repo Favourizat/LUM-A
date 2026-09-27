@@ -1,9 +1,10 @@
 
 import Image from "next/image";
-import { Star} from "lucide-react";
+import { Star } from "lucide-react";
 import AddToCartButton from "@/components/AddToCartButton/AddToCartButton";
 import Product from "@/models/Product";
 import connectToDatabase from "@/lib/mongodb";
+import ProductCard from "@/components/ProductCard/ProductCard";
 
 export default async function ProductPage({ params }) {
     const { slug } = await params;
@@ -85,7 +86,7 @@ export default async function ProductPage({ params }) {
                         <div className="h-0.5 w-32 bg-gray-200"></div>
 
                         <p className="mt-6 max-w-lg leading-7 text-[#3A2A22]/70">
-                          {product.description}
+                            {product.description}
                         </p>
                     </div>
 
@@ -110,6 +111,18 @@ export default async function ProductPage({ params }) {
 
 
                 </div>
+
+                {/* <div>
+                    <h2>
+                        More Products
+                    </h2>
+
+                    <div>
+                        {productsFromDatabase.slice(0, 6).map((product) => {
+                            <ProductCard />
+                        })}
+                    </div>
+                </div> */}
 
             </div>
         </main>

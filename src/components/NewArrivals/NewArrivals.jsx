@@ -8,19 +8,16 @@ export default function NewArrivals({ newArrivals }) {
             <div className="mx-auto max-w-7xl">
 
                 {/* Heading */}
-                <div className="mb-8 flex items-end justify-between">
-                    <div>
-                        <h2 className="text-3xl font-medium tracking-tight text-[#3A2A22] sm:text-4xl">
-                            Shop New Arrivals
-                        </h2>
-                    </div>
+                <div className="mb-10 mt-10 text-center">
+                    <p className="mb-2 text-xs font-medium tracking-[0.25em] text-[#7D8B72]">
+                        NEWEST PRODUCTS
+                    </p>
 
-                    {/* <Link
-                        href="/products"
-                        className="hidden text-sm font-medium text-[#3A2A22] transition hover:opacity-60 sm:block"
-                    >
-                        View All →
-                    </Link> */}
+                    <h2 className="font-serif text-xl font-medium tracking-tight text-[#3A2A22] sm:text-xl md:text-3xl">
+                        NEW COLLECTION
+                    </h2>
+
+                    <div className="mx-auto mt-4 h-px w-12 bg-[#B89B5E]" />
                 </div>
 
                 {/* Products */}
